@@ -1,0 +1,173 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <style>
+        .error{
+    color: red;
+}
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cosmos - Shoes eCommerce" />
+    <meta name="keywords" content="footwear, shoes, modern, shop, store, ecommerce, responsive, e-commerce" />
+    <meta name="author" content="Gedexo" />
+
+    <title>Cosmos | {% block title %}{% endblock %}</title>
+
+    <!--== Favicon ==-->
+    <link rel="shortcut icon" href="{% static 'web/assets/img/favicon.png' %}" type="image/x-icon" />
+
+    <!--== Google Fonts ==-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,500&amp;display=swap" rel="stylesheet">
+
+    <!--== Bootstrap CSS ==-->
+    <link href="{% static 'web/assets/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!--== Font Awesome Min Icon CSS ==-->
+    <link href="{% static 'web/assets/css/font-awesome.min.css' %}" rel="stylesheet" />
+    <!--== Pe7 Stroke Icon CSS ==-->
+    <link href="{% static 'web/assets/css/pe-icon-7-stroke.css' %}" rel="stylesheet" />
+    <!--== Swiper CSS ==-->
+    <link href="{% static 'web/assets/css/swiper.min.css' %}" rel="stylesheet" />
+    <!--== Fancybox Min CSS ==-->
+    <link href="{% static 'web/assets/css/fancybox.min.css' %}" rel="stylesheet" />
+    <!--== Aos Min CSS ==-->
+    <link href="{% static 'web/assets/css/aos.min.css' %}" rel="stylesheet" />
+
+    <!--== Main Style CSS ==-->
+    <link href="{% static 'web/assets/css/style.css' %}" rel="stylesheet" />
+
+    
+</head>
+
+<body style="background-color: #fff !important;">
+
+    <!--wrapper start-->
+    <div class="wrapper">
+    
+    {% include 'web/partials/header.html' %}
+    {% block content %}
+
+
+
+
+    {% endblock %}
+    {% include 'web/partials/footer.html' %}
+</div>
+
+<!--=======================Javascript============================-->
+
+<!--=== jQuery Modernizr Min Js ===-->
+
+<script src="{% static 'web/assets/js/modernizr.js' %}"></script>
+<!--=== jQuery Min Js ===-->
+<script src="{% static 'web/assets/js/jquery-main.js' %}"></script>
+<!--=== jQuery Migration Min Js ===-->
+<script src="{% static 'web/assets/js/jquery-migrate.js' %}"></script>
+<!--=== jQuery Popper Min Js ===-->
+<script src="{% static 'web/assets/js/popper.min.js' %}"></script>
+<!--=== jQuery Bootstrap Min Js ===-->
+<script src="{% static 'web/assets/js/bootstrap.min.js' %}"></script>
+<!--=== jQuery Ui Min Js ===-->
+<script src="{% static 'web/assets/js/jquery-ui.min.js' %}"></script>
+<!--=== jQuery Swiper Min Js ===-->
+<script src="{% static 'web/assets/js/swiper.min.js' %}"></script>
+<!--=== jQuery Fancybox Min Js ===-->
+<script src="{% static 'web/assets/js/fancybox.min.js' %}"></script>
+<!--=== jQuery Waypoint Js ===-->
+<script src="{% static 'web/assets/js/waypoint.js' %}"></script>
+<!--=== jQuery Parallax Min Js ===-->
+<script src="{% static 'web/assets/js/parallax.min.js' %}"></script>
+<!--=== jQuery Aos Min Js ===-->
+<script src="{% static 'web/assets/js/aos.min.js' %}"></script>
+
+<!--=== jQuery Custom Js ===-->
+<script src="{% static 'web/assets/js/custom.js' %}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.15.3/dist/sweetalert2.all.min.js"></script>
+    <script>
+        $(document).on('submit', 'form.ajax', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            var data = new FormData(this);
+            var action_url = $this.attr('action');
+            var reset = $this.hasClass('reset');
+            var reload = $this.hasClass('reload');
+            var redirect = $this.hasClass('redirect');
+            var redirect_url = $this.attr('data-redirect');
+
+            $.ajax({
+                url: action_url,
+                type: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+
+                success: function(data) {
+
+                    var status = data.status;
+                    var title = data.title;
+                    var message = data.message;
+                    var pk = data.pk;
+
+                    if (status == "true") {
+                        if (title) {
+                            title = title;
+                        } else {
+                            title = "Success";
+                        }
+
+                        Swal.fire({
+                            title: title,
+                            html: message,
+                            icon: 'success',
+                        }).then(function() {
+                            if (redirect) {
+                                window.location.href = redirect_url;
+                            }
+                            if (reload) {
+                                window.location.reload();
+                            }
+                            if (reset) {
+                                window.location.reset();
+                            }
+                        });
+
+                    } else {
+                        if (title) {
+                            title = title;
+                        } else {
+                            title = "An Error Occurred";
+                        }
+                        Swal.fire({
+                            title: title,
+                            html: message,
+                            icon: "error"
+                        });
+
+                    }
+                },
+                error: function(data) {
+                    var title = "An error occurred";
+                    var message = "something went wrong";
+                    Swal.fire({
+                        title: title,
+                        html: message,
+                        icon: "error"
+                    });
+                }
+            });
+        });
+    </script>
+    
+{% block javascript %}{% endblock %}
+
+</body>
+
+</html>

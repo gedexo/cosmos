@@ -1,0 +1,71 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <main class="main-content">
+        <section class="about-area about-default-wrapper">
+            <div class="container py-0">
+                <div class="about-item position-relative">
+                    <div class="row py-3">
+
+                        <div class="col-lg-12 col-sm-12 col-12">
+                            <div class="">
+                                <h4 class="sub-title h3-abt">Sports </h4>
+                                <div class="div-line"></div>
+                                <p class="desc-cosmos-branch" style="text-align: justify;">{{aboutbranch.sports_content|safe}}
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <div class="container py-0">
+                        <div class="row py-3">
+
+                            <div class="col-lg-12 col-sm-12 col-12 p-0">
+                                <div class="">
+                                    <h4 class="sub-title h3-abt">Cycle Store </h4>
+                                    <div class="div-line"></div>
+                                    <p class="desc-cosmos-branch" style="text-align: justify;">{{aboutbranch.cyclestore_content|safe}}
+                                    </p>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="row md-5"></div>
+                <div class="row py-3">
+
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <div class="">
+                            <h4 class="sub-title h3-abt">Fitness </h4>
+                            <div class="div-line"></div>
+                            <p class="desc-cosmos-branch" style="text-align: justify;">{{aboutbranch.fitness|safe}}
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </section>
+    </main>
+</div>
+
+
+{% endblock %}
+{% block Javascript %}
+
+{% endblock %}

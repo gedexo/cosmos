@@ -1,0 +1,106 @@
+{% extends 'official/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body {
+    height: 100%;
+    width: 100%;
+    overflow: auto !important;
+}
+</style>
+<div>
+<form id="productForm">
+    {% csrf_token %}
+<div class="row g-3 mb-3">
+    <div class="col-xl-4 col-lg-4" >
+        <input type="number" id="editId" hidden>
+        <div class="sticky-lg-top">
+            <div class="card mb-3">
+                <div  id="formDiv" class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6  class="m-0 fw-bold" id="productDiv1">Product Details</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-12">
+                            <label  class="form-label">Product Price Old</label>
+                            <input name="previous_price" type="text" class="form-control">
+                        </div>
+                        <div class="col-md-12">
+                            <label  class="form-label">Product Price New</label>
+                            <input name="current_price" type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label  class="form-label">Product Image</label>
+                            <input name="image" id="image" type="file" class="form-control">
+                            <p id="alertPTag" style="color: red;"></p>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>                         
+        </div>
+    </div>
+    <div class="col-xl-8 col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                <h6 class="mb-0 fw-bold ">Basic information</h6>
+            </div>
+            <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-12">
+                            <label class="form-label">Product Title</label>
+                            <input name="title" type="text" class="form-control" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Product Identifier URL</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">eg:https://cosmos.com/..</span>
+                                <input name="url" type="text" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                                <label  class="form-label">Best seller</label>
+                                <input name="best_seller" id="bestSeller" type="checkbox">
+                        </div>
+                        <div class="col-md-12">
+                            <div id="editor">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+</div>
+<div class="row g-3 mb-3"> 
+            <div class="col-md-12">
+                <div class="card"> 
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                        <h6 class="m-0 fw-bold">Products</h6>
+                    </div>
+                    <div class="card-body"> 
+                        <table id="productTable" class="table table-hover align-middle mb-0" style="width: 100%;">  
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Price old</th>
+                                    <th>price new</th>
+                                    <th>Url</th>
+                                    <th>Image</th>
+                                    <th>Best seller</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Row end  -->
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'official/js/helper.js' %}"></script>
+<script src="{% static 'official/js/products.js'%}"></script>
+{% endblock %}

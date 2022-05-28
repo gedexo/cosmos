@@ -1,0 +1,58 @@
+{% load static %}
+<header class="main-header-wrapper position-relative">
+    <div class="header-middle">
+        <div class="container pt--0 pb--0">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <div class="header-middle-align">
+                        <div class="header-middle-align-start">
+                            <div class="header-logo-area">
+                                <a href="/">
+                                    <img class="logo-main" src="{% static 'web/assets/img/Cosmos_LOGO.svg' %}"  alt="Logo" style="width: 76%;" />
+                                    <img class="logo-light" src="{% static 'web/assets/img/Cosmos_LOGO.svg' %}" alt="Logo" style="width: 76%;" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="header-middle-align-center">
+                            <div class="header-search-area">
+                                <form class="header-searchbox">
+                                    <input type="search" class="form-control" placeholder="Search">
+                                    <button class="btn-submit" type="submit"><i class="pe-7s-search"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="header-middle-align-center">
+                            <div class="header-navigation-area position-relative">
+                                <ul class="main-menu nav">
+                                    <li><a href="/"><span>Home</span></a></li>
+                                    <li><a href="/about/"><span>About us</span></a></li>
+                                    <li><a href="/#products"><span>Products</span></a></li>
+                                    <li><a href="/#service"><span>Service</span></a></li>
+                                    <li><a href="/branches/"><span>Branch</span></a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="header-middle-align-end">
+                            <div class="header-action-area">
+                                <div class="shopping-search">
+                                    <button class="shopping-search-btn" type="button" data-bs-toggle="offcanvas"
+                                        data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch"><i
+                                            class="pe-7s-search icon"></i></button>
+                                </div>
+                                <button class="btn-menu" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
+                                    <i class="pe-7s-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>

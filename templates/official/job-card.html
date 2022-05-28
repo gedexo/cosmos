@@ -1,0 +1,678 @@
+{% extends 'official/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="body d-flex py-3">
+                <div class="container-xxl">
+                    <div class="row align-items-center">
+                        <div class="border-0 mb-4">
+                            <div class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                                <h3 class="fw-bold mb-0">COSMO0{{pk}}</h3>
+                            </div>
+                        </div>
+                    </div> <!-- Row end  -->
+
+                    <div class="row align-item-center" id="fitnessJobCardDiv">
+                        <div class="col-md-12">
+                            <input type="text" value="{{category}}" id="categoryId" hidden>
+                            <input type="text" value="{{fitnesesJobCardId}}" id="fitnessEditId" hidden>
+                            <input type="text" value="{{fitnesesJobCardId}}" id="fitnesesJobCardId" hidden>
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0"  id="productFDetails">
+                                    <h3  id="productFDetails" class="mb-0 fw-bold ">Product Details</h3> 
+                                </div>
+                                <div class="card-body">
+                                    <form id="fitnessForm">
+                                        <div class="row g-3 align-items-center mt-0" id="productFDetails">
+                                            <input type="text" value="{{pk}}" name="service_request" hidden>
+                                            <div class="col-md-6">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" name="name" id="name" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <input type="text" name="phone" id="phone" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="Address" class="form-label">Issues</label>
+                                                <textarea class="form-control" name="issues"
+                                                    placeholder="Issues"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Address" class="form-label">Address</label>
+                                                <textarea class="form-control" name="customer_address" placeholder="Address"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Reported date" class="form-label">Reported date</label>
+                                                <input type="text" name="reported_date" id="reportedDate" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label  class="form-label">Machine Type</label>
+                                                <select id="machineType" class="form-control valid" name="machine_type">
+                                                    <option selected disabled>--Not selected--</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="model_no" class="form-label">Model no</label>
+                                                <select id="modelNo" class="form-control valid" name="model_no">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="date_of_purchase"  class="form-label">Date of purchase</label>
+                                                <input type="text" name="date_of_purchase" id="dateOfPurchase" class="form-control">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label  class="form-label">Amc</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input name="amc" id="amcTrue" class="form-check-input" type="checkbox" value="1">
+                                                            <label class="form-check-label">
+                                                            Yes
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input id="amcFalse" class="form-check-input" type="checkbox" name="amc" value="0">
+                                                            <label class="form-check-label" >
+                                                            No
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Warranty</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input id="warrantyTrue" class="form-check-input" type="checkbox" name="has_warranty" value="1">
+                                                            <label class="form-check-label lb1">
+                                                            Yes
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input id="warrantyFalse" class="form-check-input" type="checkbox" name="has_warranty" value="0">
+                                                            <label class="form-check-label" >
+                                                            No
+                                                            </label>
+                                                        </div>
+                                                    </div>                                                  
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="col-md-6" id="fitnessComplaintsDiv">
+                                                <label for="complaints" class="form-label">Complaints</label>
+                                                <select id="complaintsF" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label  class="form-label">Customer Attended Technician</label>
+                                                <select name="customer_attended_technician" id="technician" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="col-lg-6">
+                                                <table id="fitnessComplaintsTable" class="table table-striped border" style="width: 100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Complaints</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                            </div>
+                                        </div>
+                                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0" id="technicianFDetails">
+                                            <h3 id="technicianFDetails" class="mb-0 fw-bold">Technician Details</h3> 
+                                        </div>
+
+                                        <div class="row g-3 align-items-center mt-0" id="technicianFDetails">
+                                           
+                                            <div class="col-md-12">
+                                                <label for="technician_name" class="form-label">Technician</label>
+                                                <select id="technician" name="technician_name" class="form-control">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="attended_date" class="form-label">Attended date</label>
+                                                <input type="text" name="attended_date" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="action_taken" class="form-label">Action taken</label>
+                                                <textarea  class="form-control" name="action_taken" rows="3"></textarea> 
+                                            </div>
+                                            
+                                            <div class="card-body">
+                                            <table id="fitnessUsedPartsTable" class="table table-striped border" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#Item code</th>
+                                                        <th>Item name</th>
+                                                        <th>Amount</th>
+                                                        <th>Foc</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label  class="form-label">Service Charge</label>
+                                            <input name="service_charge" min="1" id="serviceChargefitness" type="number" class="form-control" placeholder="Service charge">
+                                        </div> <div class="col-md-6">
+                                            <label  class="form-label">Sub Total</label>
+                                            <input name="" id="subTotalFitness" type="text" class="form-control" placeholder="Sub total" disabled>  
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label  class="form-label">Remark</label>
+                                            <textarea type="text" name="remark" class="form-control"
+                                            placeholder="Remark"></textarea>                                        </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Status</label>
+                                                <select id="status" name="status" class="form-control">
+                                                    <option value="attended">attended</option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6" id="pendingReasonDiv">
+                                                <label class="form-label">Pendind reason</label>
+                                                <input id="pendingReason" nam type="text" class="form-control" name="pending_reason" placeholder="Pending reason">
+                                            </div>
+                                            <div class="col-md-6" id="completedDateDiv">
+                                                <label  class="form-label">Completed date</label>
+                                                <input name="completed_date" id="completedDate" type="text" class="form-control w-100" >
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="btn-group dropup" id="divPrint">
+                                <button id="printFitnessDetails" type="button"
+                                    class="btn btn-success mt-4 dropdown-toggle dropbtn" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span>print
+                                </button>
+                                <div id="dropDown" class="dropdown-content">
+                                    <a class="dropdown-item" onclick="printProductDetails('{{category}}','{{pk}}')">Product details</a>
+                                    <a class="dropdown-item" onclick="printTechnicianDetails('{{category}}','{{pk}}')">Technician details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- Row end  -->
+
+                    <!-- Cycle -->
+                    <div class="row align-item-center" id="cycleJobCardDiv">
+                        <div class="col-md-12">
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                    <input type="text" id="cycleJobCardId" value="{{cycleJobCardId}}" hidden>
+                                    <input type="text" id="cycleEditId" value="{{cycleJobCardId}}" hidden>
+
+                                    <h3 id="productFDetails" class="mb-0 fw-bold ">Product Details</h3> 
+                                </div>
+                                <div class="card-body"> 
+                                    <form id="cycleForm">
+                                        <div class="row g-3 align-items-center mt-0" id="productFDetails">
+                                            <input type="text" value="{{pk}}" name="service_request" hidden>
+                                            <div class="col-md-6">
+                                                <label for="Address" class="form-label">Name</label>
+                                                <input type="text" name="name" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="lastname" class="form-label">Phone</label>
+                                                <input type="text" name="phone" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="Address" class="form-label">Issues</label>
+                                                <textarea class="form-control" name="issues"
+                                                    placeholder="Issues"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="Address" class="form-label">Address</label>
+                                                <textarea class="form-control" name="customer_address" placeholder="Address"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="lastname" class="form-label">Reported date</label>
+                                                <input type="text" name="reported_date" class="form-control w-100" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label  class="form-label">Customer Attended Technician</label>
+                                                <select name="customer_attended_technician" id="technician" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="model_no" class="form-label"> Brand</label>
+                                                <select name="brand" id="brand" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="brand"  class="form-label">Model name</label>
+                                                <select name="model_name" id="modelName" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="color" class="form-label">color</label>
+                                                <input type="text" name="color" class="form-control" placeholder="Color">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="size" class="form-label">Wheel size</label>
+                                                <select name="size" id="wheelSize" class="form-control valid">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>   
+                                            <div class="col-md-3">
+                                                <label for="frame_no" class="form-label">Frame no</label>
+                                                <input type="text" name="frame_no" class="form-control" placeholder="Frame no">
+                                            </div>                          
+                                            <div class="col-md-6">
+                                                <label for="date_of_purchase" class="form-label">Date of Purchase</label>
+                                                <input type="text" name="date_of_purchase" class="form-control w-100" placeholder="Size">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="recieved_date" class="form-label">Cycle Recieved date</label>
+                                                <input type="text" name="attended_date" class="form-control w-100" disabled>
+                                            </div>
+                                       
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <table id="cycleComplaintsTable" class="table table-striped border" style="width: 100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Complaints</th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <table id="cycleAccessoriesTable" class="table table-striped border" style="width: 100%;">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Accessories</th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label  class="form-label">Warranty or Non Warranty</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input name="has_warranty" id="warrantyTrue" class="form-check-input" type="checkbox" value="1">
+                                                            <label class="form-check-label">
+                                                            Warranty
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input name="has_warranty" id="warrantyFalse" class="form-check-input" type="checkbox" value="0">
+                                                            <label class="form-check-label" >
+                                                            Non Warranty
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label  class="form-label">Water service(on paid basis)</label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input name="water_service" id="waterServiceTrue" class="form-check-input" type="checkbox" value="1">
+                                                            <label class="form-check-label" >
+                                                            Yes
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-check">
+                                                            <input name="water_service" id="waterServiceFalse" class="form-check-input" type="checkbox" value="0">
+                                                            <label class="form-check-label" >
+                                                            No
+                                                            </label>
+                                                        </div>
+                                                    </div>                                                  
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="row g-3 align-items-center mt-0" id="technicianFDetails">
+                                            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                                <h3 class="mb-0 fw-bold" id="technicianFDetails">Technician Details</h3> 
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="technician_name" class="form-label">Technician</label>
+                                                <select id="technician" name="technician_name" class="form-control">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Service attend date</label>
+                                                <input type="text" name="service_attended_date" class="form-control w-100" disabled>
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="action_taken" class="form-label">Action taken</label>
+                                                <textarea name="action_taken" class="form-control" id="addnote" rows="3"></textarea> 
+                                            </div>
+                                            <div class="card-body">
+                                                <label for="action_taken" class="form-label">Used Parts</label>
+                                            <table id="cycleUsedPartsTable" class="table table-striped border" style="width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#Item code</th>
+                                                        <th>Item name</th>
+                                                        <th>Amount</th>
+                                                        <th>Foc</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                        <p id="111"></p>
+                                        <div class="col-md-6">
+                                            <label  class="form-label">Service Charge</label>
+                                            <input name="service_charge" min="1" id="serviceChargeCycle" type="number" class="form-control" placeholder="Service charge">
+                                        </div> <div class="col-md-6">
+                                            <label  class="form-label">Sub Total</label>
+                                            <input name="" id="subTotalCycle" type="text" class="form-control" placeholder="Sub total" disabled>  
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label class="form-label">Remark</label>
+                                            <textarea type="text" name="remarks" class="form-control"
+                                                placeholder="Remark"></textarea>
+                                        </div>
+                                            <div class="col-md-6">
+                                                <label for="mobileno" class="form-label">Status</label>
+                                                <select name="status" id="status" class="form-control">
+                                                    <option value="attended">attended</option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6" id="pendingReasonDiv">
+                                                <label  class="form-label">Pendind reason</label>
+                                                <input name="pending_reason" id="pendingReason" type="text" class="form-control" placeholder="Pending reason">
+                                            </div>
+                                            <div class="col-md-6" id="completedDateDiv">
+                                                <label  class="form-label">Completed date</label>
+                                                <input name="completed_date" id="completedDate" type="text" class="form-control w-100" >
+                                            </div>
+                                        </div>                                       
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="btn-group dropup" id="divPrint">
+                                <button id="printCycleDetails" type="button"
+                                    class="btn btn-success mt-4 dropdown-toggle dropbtn" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span>print
+                                </button>
+                                <div id="dropDownCycle" class="dropdown-content">
+                                    <a class="dropdown-item" onclick="printProductDetails('{{category}}','{{pk}}')">Product details</a>
+                                    <a class="dropdown-item" onclick="printTechnicianDetails('{{category}}','{{pk}}')">Technician details</a>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    </div><!-- Row end  -->
+
+                    <!-- badminton -->
+
+                    <div class="row align-item-center" id="shuttleJobCardDiv">
+                        <div class="col-md-12">
+                           <input type="text" value="{{category}}" id="categoryId" hidden>
+                            <input type="text" value="{{badmintonJobCardId}}" id="badmintonEditId" hidden>
+                            <input type="text" value="{{badmintonJobCardId}}" id="badmintonJobCardId" hidden>
+                            <div class="card mb-3">
+                                <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                                    <h3 class="mb-0 fw-bold ">BADMINTON RACKET</h3> 
+                                </div>
+                                <div class="card-body">
+                                    <form id="badmintonForm">
+                                        <div class="row g-3 align-items-center mt-0">
+                                            <input type="text" value="{{pk}}" name="service_request" hidden>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Name</label>
+                                                <input type="text" name="name" id="bName" class="form-control" placeholder="Name" disabled>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="technician_name" class="form-label">Phone</label>
+                                                <input type="text" name="phone" id="bPhone" class="form-control" placeholder="Phone" disabled>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label for="Address" class="form-label">Issues</label>
+                                                <textarea class="form-control" name="issues"
+                                                    placeholder="Issues"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="attended_date" class="form-label">Nearest branch</label>
+                                                <select id="nearest_branch" name="nearest_branch" class="form-control">
+                                                    <option selected disabled>--Not selected--</option>
+                                                    {% for branch in branch %}
+                                                    <option value="{{branch.id}}">{{branch.name}}</option>
+                                                    {% endfor  %}
+                                                    </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label  class="form-label">Reported Date</label>
+                                                <input name="reported_date" type="text" class="form-control" disabled/> 
+                                            </div>                             
+                                            <div class="col-md-12">
+                                                <!-- <label  class="form-label">Services</label> -->
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input id="batTypeBadminton" name="bat_type" class="form-check-input" type="checkbox" value="badminton">
+                                                            <label class="form-check-label" >
+                                                            Badminton Bat
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-check">
+                                                            <input id="batTypeTennis" name="bat_type" class="form-check-input" type="checkbox" value="tennis">
+                                                            <label class="form-check-label" >
+                                                            Tennis Bat
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                     
+                                                    
+                                                    
+                                                    <div class="col-md-6">
+                                                        <label  class="form-label">Attended Date</label>
+                                                        <input name="attended_date" type="text" class="form-control" disabled /> 
+                                                    </div>                                                                                            
+                                                </div>                           
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <label  class="form-label">Brand</label>
+                                                <select class="form-control valid" id="brand" name="brand">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label">Model</label>
+                                                <select class="form-control valid" id="model" name="model">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label  class="form-label">Technician</label>
+                                                <select class="form-control valid" id="technician" name="technician">
+                                                    <option selected disabled>--Not selected--</option>
+                                                </select>
+                                            </div>
+                                            <div class="row pt-3"></div>
+                                            <div class="row">
+                                                <label  class="form-label">Services</label>
+                                                    <div class="col-md-4">
+                                                        <div class="form-check">
+                                                            <input id="services" name="guttingService" class="form-check-input" type="checkbox" value="Gutting">
+                                                            <label class="form-check-label" >
+                                                            Gutting
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-check">
+                                                            <input id="services" class="form-check-input" type="checkbox" value="Repairing(carbon)">
+                                                            <label class="form-check-label" >
+                                                            Repairing(carbon)
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                    <div class="col-md-4">
+                                                        <div class="form-check">
+                                                            <input id="services" class="form-check-input" type="checkbox" value=" Handgrip">
+                                                            <label class="form-check-label" >
+                                                            Hand grip
+                                                            </label>
+                                                        </div>
+                                                    </div>   
+                                                     
+                                            </div>
+                                            <div class="row pt-3"></div>
+                                            <div class="row" id="guttingDetailsDiv">
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Item name</label>
+                                                    <input name="item_name" type="text" class="form-control" placeholder="Item name">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Code</label>
+                                                    <input name="code" type="text" class="form-control" placeholder="Code">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Color</label>
+                                                    <input name="color" type="text" class="form-control" placeholder="Color">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Lbs</label>
+                                                    <input name="lbs" type="text" class="form-control" placeholder="Lbs">
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label class="form-label">Amount</label>
+                                                    <input name="amount" type="number" class="form-control" placeholder="amount">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="form-label">Cover</label>
+                                                    <div class="row">
+                                                        <div class="col-lg-4">
+                                                            <input id="coverFull" class="form-check-input" name="cover" type="checkbox" value="full">
+                                                                <label class="form-check-label" >
+                                                                    Full
+                                                                </label>
+                                                        </div>
+                                                        <div class="col-lg-4">
+                                                            <input id="coverHalf" class="form-check-input" name="cover" type="checkbox" value="half">
+                                                                <label class="form-check-label" >
+                                                                    Half
+                                                                </label>
+                                                        </div>
+                                                        
+                                                    <div class="col-lg-4">
+                                                        <input id="coverNill" class="form-check-input" name="cover" type="checkbox" value="nill">
+                                                            <label class="form-check-label" >
+                                                                Nill
+                                                            </label>
+                                                    </div>
+                                                    </div>
+     
+                                                </div>
+                                            </div>
+                                            <div class="row pt-3"></div>
+                                            <div class="row">
+                                                <label class="form-label">Payment</label>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input id="partial" name="payment_recieved" class="form-check-input"
+                                                            type="checkbox" value="partial" disabled>
+                                                        <label class="form-check-label">
+                                                            Partial
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input id="paid" name="payment_recieved" class="form-check-input" type="checkbox"
+                                                            value="paid" disabled>
+                                                        <label class="form-check-label">
+                                                            Paid
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input id="notpaid" name="payment_recieved" class="form-check-input" type="checkbox"
+                                                            value="notpaid" disabled>
+                                                        <label class="form-check-label">
+                                                            Not paid
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <label class="form-label">Remark</label>
+                                                <textarea type="text" name="remarks" class="form-control"
+                                                    placeholder="Remark"></textarea>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Status</label>
+                                                <select id="status" name="status" class="form-control">
+                                                    <option value="attended">attended</option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Expected Time Of Delivery</label>
+                                                <input name="expected_time" type="text" class="form-control" placeholder="Expected Time">
+                                            </div>
+                                            <div class="col-md-6" id="pendingReasonDiv">
+                                                <label class="form-label">Pendind reason</label>
+                                                <input id="pendingReason" name="pending_reason" type="text" class="form-control" name="pending_reason" placeholder="Pending reason">
+                                            </div>
+                                            <div class="col-md-6" id="completedDateDiv">
+                                                <label  class="form-label">Completed date</label>
+                                                <input name="completed_date" id="completedDate" type="text" class="form-control w-100" >
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <button  type="button"  onclick="badminton('{{pk}}')"  class="btn btn-info mt-4 dropbtn1"><span
+                                class="glyphicon glyphicon-print" aria-hidden="true"></span>Print</button>
+                        
+                        </div>
+                    </div>
+
+<!-- <end -->
+
+                </div>
+            </div>
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'official\js\helper.js' %}"></script>
+<script src="{% static 'official\js\job-card.js' %}"></script>
+<script src="{% static 'official\js\job-card-helper.js' %}"></script>
+<script src="{% static 'official\js\complaints-accessories.js' %}"></script>
+<script src="{% static 'official\js\events.js' %}"></script>
+{% endblock %}

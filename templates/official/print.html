@@ -1,0 +1,692 @@
+{% extends 'official/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{%static 'official/assets/css/print1.css' %}">
+<input type="text" value="{{job_card}}" id="jobCardIds" hidden>
+<div class="container pr-paper shadow p-3 mb-5 bg-white rounded" id="cycleProductDetailsDiv">
+    <div class="row">
+        <div>
+            <img src="{% static 'branch/image/Cosmos logo.png' %}" alt="" class="image_width">
+        </div>
+
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-7 pad">
+            <label class="size"><span id="cycleServiceRequestID"></span></label>
+
+        </div>
+        <div class="col-sm-5 pad_second">
+            <label> Cycle Recieved Date: <span id="cycleJobCardRecievedDate"></span></label>
+
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Name : <span id="cycleJobCardName"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Phone : <span id="cycleJobCardPhone"></span></label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row_margin">
+            <div class="col-sm-12 ">
+                <div class="border_textarea">
+                    <label for="">Address : <span id="cycleJobCardAddress"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row_margin_after">
+            <div class="border">
+                <label for="" class="label_pad">Customer Attended Technician : <span
+                        id="cycleJobCardCustomerAttendTechnician"></span></label>
+                <label for="">Brand : <span id="cycleJobCardBrand"></span></label>
+                
+            </div>
+        </div>
+
+
+        <div class="row_margin_after1">
+            <div class="border">
+                <label for="" class="color_pad" >Model name:<span id="cycleJobCardModelName"></span></label>
+                <label for="" class="color_pad">Color : <span id="cycleJobCardColor"></span> </label>
+                <label for="" class="wheel_pad">Wheel size : <span id="cycleJobCardWheelSize"></span></label>
+                <label for="">Frame no : <span id="cycleJobCardFrameNO"></span></label>
+            </div>
+        </div>
+        <div class="row_margin_after1">
+            <div class="border">
+                <label for="" class="purchase_pad">Date of Purchase : <span
+                        id="cycleJobCardPurchaseDate"></span></label>
+                <label for="">Reported date : <span id="cycleJobCardReportDate"></span></label>
+            </div>
+        </div>
+        <div class="col-sm-12 compalints_margin">
+            <div class="row">
+                <div class="col-sm-7 ">
+                    <div class="border_none color">
+                        <label class="comp_pad">COMPLAINTS :</label>
+                    </div>
+                    <div class="star_pad" id="complaintsCycle">
+
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border_none color">
+                        <label class="comp_pad">ACCESSORIES :</label>
+                    </div>
+                    <div class="star_pad" id="accessoriesCycle">
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class="border_none_warranty color">
+                <label for="" class="label_pad">Warranty or Non Warrenty : </label>
+                <label for="">Water service(on paid basis) :</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 check_pad_left_warranty">
+                <input type="checkbox" name="" id="cycleJobCardWarrantyTrue" ><label
+                    class="checkbox_padding">Warranty :</label> &nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="" id="cycleJobCardWarrantyFalse" ><label
+                    class="checkbox_padding">Non Warranty :</label>
+            </div>
+            <div class="col-sm-6 check_pad_left">
+
+                <input type="checkbox" name="" id="cycleJobCardWaterServiceTrue" ><label
+                    class="checkbox_padding">Yes </label>&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" name="" id="cycleJobCardWaterServiceFalse" ><label
+                    class="checkbox_padding">No</label>
+            </div>
+
+
+        </div>
+        <div class="row_margin_after" id="completedDateDiv">
+            <div class="border">
+                <label for="" class="label_pad">Completed Date : <span
+                        id="completedDate"></span></label>
+                
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container pr-paper1 shadow p-3 mb-5 bg-white rounded" id="badmintonDetailsDiv">
+    <div class="row">
+        <div>
+            <img src="{% static 'branch/image/Cosmos logo.png' %}" alt="" class="image_width">
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-7 pad">
+            <label class="size" id="=badmintonServiceRequestID"></label>
+
+        </div>
+        <div class="col-sm-5 pad_second">
+            <label> Attended date: <span id="badmintonJobCardAttendedDate"></span></label>
+
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Name : <span id="badmintonJobCardName"></span></label>
+                    </div>
+                    <br>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Phone : <span id="badmintonJobCardPhone"></span></label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-sm-12 row_margin">
+            <div class="row">
+                <div class="col-sm-12 ">
+                    <div class="border">
+                        <label class="">Nearest branch : <span id="badmintonJobCardNearestBranch"></span></label>
+                    </div>
+                    <br>
+                </div>
+                <br>
+            </div>
+
+        </div>
+    </div>
+    <div class="pt-3">
+        <div class="col-lg-12 border">
+
+            <label for="" class="py-2">Technician :<span id="badmintonJobCardTechnician"></span></label>
+        </div>
+        <div class="row_margin">
+            <input type="checkbox" id="badmintonBat"><label class="checkbox_padding">Badminton Bat</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="checkbox" id="tennisBat"> <label class="checkbox_padding">Tennis Bat</label>
+        </div>
+    </div>
+    <div class="col-sm-12 row_margin">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="border">
+                    <label class="">Brand : <span id="badmintonJobCardBrand"></span></label>
+                </div>
+            </div>
+
+            <br>
+            <div class="col-sm-4">
+                <div class="border">
+                    <label class="">Model : <span id="badmintonJobCardModel"></span></label>
+                </div>
+
+            </div>
+            <br>
+            <div class="col-sm-4">
+                <div class="border">
+                    <label class="">Reported Date : <span id="badmintonJobCardReportedDate"></span></label>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row_margin">
+        <div class="col-sm-12">
+            <div class="border services-badminton-service">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+
+                <label class="">Services :</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                    <input type="checkbox" id="services" value="Repairing(carbon)" ><label
+                        class="gutting checkbox_padding bad-serv">Repairing(carbon)</label>
+                    <input type="checkbox" id="services" value=" Handgrip" ><label
+                        class="gutting checkbox_padding bad-serv">Hand grip </label>
+                    <input type="checkbox" id="services" value="Gutting" ><label
+                        class="gutting checkbox_padding bad-serv">Gutting</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row_margin">
+
+        <div class="col-sm-4">
+            <label for="" class="label_align">Item name :<span></span></label>
+            <div class="border" id="badmintonJobCardItemName">
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-2">
+            <label for="" class="label_align">Code :<span></span></label>
+            <div class="border" id="badmintonJobCardItemCode">
+            </div>
+        </div>
+        <br>
+        <div class="col-sm-2">
+            <label for="" class="label_align">Color :<span></span></label>
+            <div class="border" id="badmintonJobCardColor">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <label for="" class="label_align">LBS :<span></span></label>
+            <div class="border" id="badmintonJobCardLbs">
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <label for="" class="label_align">Amount :<span></span></label>
+            <div class="border" id="badmintonJobCardAmount">
+            </div>
+        </div>
+        <br>    
+        <div class="row row_margin">
+            <div class="col-lg-3 bd-cvr">
+                <label class="print_lable" for="">Cover :</label>
+
+            </div>
+            <div class="col-lg-3 bd-cvr">
+                <div><input type="checkbox" name="cover" value="full" ><label class="checkbox_padding">Full</label>
+                </div>
+            </div>
+            <div class="col-lg-3 bd-cvr">
+                <div><input type="checkbox" name="cover" value="half" ><label class="checkbox_padding">Half</label>
+                </div>
+            </div><div class="col-lg-3 bd-cvr">
+                
+            <div><input type="checkbox" name="cover" value="nill" ><label class="checkbox_padding">Nill</label>
+            </div>
+            </div>
+            
+          
+        </div>
+
+
+
+    </div>
+    <div class="row_margin">
+        <div class="col-sm-12">
+            <div class="border services-badminton-service">
+                <div class="col-lg-2 col-md-2 col-sm-2">
+                <label class="">Payment :</label>
+
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-10">
+                
+                    <input type="checkbox" id="payment" value="partial" ><label
+                        class="gutting checkbox_padding bad-serv">Partial</label>
+                    <input type="checkbox" id="payment" value="paid" ><label
+                        class="gutting checkbox_padding bad-serv">Paid </label>
+                    <input type="checkbox" id="payment" value="notpaid" ><label
+                        class="gutting checkbox_padding bad-serv">Not Paid</label>
+                
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-12 row_margin">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <div class="border">
+                    <label class="">Remarks : <span id="badmintonJobCardRemarks"></span></label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-sm-12 row_margin">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="border">
+                    <label class="">Expected Time Of Delivery : <span
+                            id="badmintonJobCardExpectedDeliveryTime"></span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row_margin_after" id="completedDateDiv">
+        <div class="border">
+            <label for="" class="label_pad">Completed Date : <span
+                    id="completedDate"></span></label>
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container pr-paper shadow p-3 mb-5 bg-white rounded" id="fitnessProductDetailsDiv">
+    <div class="row">
+        <div>
+            <img src="{% static 'branch/image/Cosmos logo.png' %}" alt="" class="image_width">
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-7 pad">
+            <label class="size" id="fitnessServiceRequestID"></label>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Name : <span id="fitnessJobCardName"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Phone : <span id="fitnessJobCardPhone"></span></label>
+                    </div>
+
+                </div>
+
+                <div class="row row_margin">
+                    <div class="col-sm-12 ">
+                        <div class="border_textarea border_textarea1">
+                            <label for="">Address : <span id="fitnessJobCardAddress"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 row_margin">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="border">
+                                <label class="">Date of purchase : <span
+                                        id="fitnessJobCardDateOfPurchase"></span></label>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="border">
+                                <label class="">Reported Date : <span id="fitnessJobCardReportedDate"></span></label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-sm-12">
+            <div class=" row row_margin">
+
+                <div class="col-sm-6">
+                    <div class="border">
+                        <label for="" class="">Machine Type : <span id="fitnessJobCardMachineType"></span></label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="border">
+                        <label for="" class="">Model no : <span id="fitnessJobCardModelNo"></span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-4">
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="" class="py-2">Amc :</label>
+                    <div>
+                        <input type="checkbox" id="fitnessJobCardAmcTrue" ><label
+                            class="checkbox_padding">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="fitnessJobCardAmcFalse" ><label
+                            class="checkbox_padding">No</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label for="" class="py-2">Warranty :</label>
+                    <div>
+                        <input type="checkbox" id="fitnessJobCardWarrantyTrue" ><label
+                            class="checkbox_padding">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="checkbox" id="fitnessJobCardWarrantyFalse" ><label
+                            class="checkbox_padding">No</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row row_margin">
+
+                <div class="col-sm-12">
+                    <div class="border">
+                        <label for="">Customer Attended Technician: <span
+                                id="fitnessJobCardCustomerAttendTechnician"></span> </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row row_margin">
+                <div class="col-sm-12">
+                    <div class="border_textarea_complaints">
+                        <label for="">COMPLAINTS :</label>
+                        <div class="star_pad" id="complaintsFitness">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row_margin_after" id="completedDateDiv">
+            <div class="border">
+                <label for="" class="label_pad">Completed Date : <span
+                        id="completedDate"></span></label>
+                
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<div class="container  pr-paper shadow p-3 mb-5 bg-white rounded" id="cycleTechnicinaDetailsDiv">
+    <div class="row">
+        <div>
+            <img src="{% static 'branch/image/Cosmos logo.png' %}" alt="" class="image_width">
+        </div>
+
+    </div>
+    <hr>
+    <div class="row" id="cycleTechnicinaDetailsDiv">
+        <div class="col-sm-7 pad">
+            <label class="size" id="cycleServiceRequestID"></label>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Technician: <span id="cycleJobCardTechnican"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Service attended date: <span
+                                id="cycleJobCardServiceAttendedDate"></span></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row_margin">
+            <div class="col-sm-12">
+                <label class="">Action taken :</label>
+                <div class="border action-div" id="cycelJobcardActionTaken">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="table_margin">
+            <label for="">USED PARTS :</label>
+            <table id="jobCardUsedPartsTableCycle">
+                <tr>
+                    <th>ITEM CODE</th>
+                    <th>ITEM NAME</th>
+                    <th>FOC</th>
+                    <th>AMOUNT</th>
+                </tr>
+
+            </table>
+            <div class="div_margin py-3">
+                <label for="">Total : <span id="usedPartsTotalCycle"></span></label>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row row_margin">
+
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Service Charge : <span id="cycleJobCardServiceCharge"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Sub Total : <span id="subTotalCycle"></span></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row row_margin">
+                <div class="col-sm-12">
+                    <label class="">Remark :</label>
+                    <div class="border action-div" id="cycelJobcardRemark">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row_margin_after" id="completedDateDiv">
+            <div class="border">
+                <label for="" class="label_pad">Completed Date : <span
+                        id="completedDate"></span></label>
+                
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="container  pr-paper shadow p-3 mb-5 bg-white rounded" id="fitnessTechnicianDetailsDiv">
+    <div class="row">
+        <div>
+            <img src="{% static 'branch/image/Cosmos logo.png' %}" alt="" class="image_width">
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-7 pad">
+            <label class="size" id="fitnessServiceRequestID"></label>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-6 ">
+                    <div class="border">
+                        <label class="">Attended date : <span id="fitnessJobCardAttendedDate"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="border">
+                        <label class="">Technician : <span id="fitnessJobCardTechnician"></span></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 row_margin">
+            <div class="row_margin">
+                <div class="col-sm-12">
+                    <label class="">Action taken : <span></span></label>
+                    <div class="border action-div" id="fitnessJobCardActionTaken">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table_margin">
+            <label for="">USED PARTS :</label>
+            <table id="jobCardUsedPartsTableFitness">
+                <tr>
+                    <th>ITEM CODE</th>
+                    <th>ITEM NAME</th>
+                    <th>FOC</th>
+                    <th>AMOUNT</th>
+                </tr>
+
+            </table>
+            <div class="div_margin py-3">
+                <label for="">Total : <span id="usedPartsTotalFitness"></span></label>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+
+                <div class="col-sm-7 ">
+                    <div class="border">
+                        <label class="">Service Charge :<span id="fitnessJobCardServiceCharge"></span></label>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-5 ">
+                    <div class="border">
+                        <label class="">Sub Total : <span id="subTotalFitness"></span></label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class=" row_margin">
+            <div class="col-sm-12">
+                <div class="border_textarea">
+                    <label for="">Remark : <span id="fitnessJobCardRemark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row_margin_after" id="completedDateDiv">
+            <div class="border">
+                <label for="" class="label_pad">Completed Date : <span
+                        id="completedDate"></span></label>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container ml-1 cnt-print">
+    <button class="print-button" id="btnPrint"><span class="print-icon"></span></button>
+    <button type="button" id="btnBack" class="btn btn-primary btn-print-back"><a href="#"></a>
+        <svg xmlns="https://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z">
+            </path>
+        </svg>Back
+    </button>
+</div>
+
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'official\js\helper.js' %}"></script>
+<script src="{% static 'official\js\print.js' %}"></script>
+{% endblock %}

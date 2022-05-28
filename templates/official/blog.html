@@ -1,0 +1,110 @@
+{% extends 'official/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .table  tr { height: 50px } 
+</style>
+<div id="topofthePage">
+<form id="blogForm">
+    {% csrf_token %}
+<div class="row g-3 mb-3">
+    <div class="col-xl-4 col-lg-4" >
+        <input type="number" id="editId" hidden>
+        <div class="sticky-lg-top" id="formDiv">
+            <div class="card mb-3">
+                <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                    <h6 class="m-0 fw-bold" id="productDiv1">Blog Details</h6>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <label  class="form-label">Blog Title</label>
+                        <input name="heading" type="text" class="form-control" required>
+                    </div>
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-12">
+                            <label  class="form-label">Content</label>
+                            <textarea name="content" type="text" class="form-control" rows="5" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>                         
+        </div>
+    </div>
+    <div class="col-xl-8 col-lg-8">
+        <div class="card mb-3">
+            <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                <h6 class="mb-0 fw-bold ">Basic information</h6>
+            </div>
+            <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-md-12">
+                            <label class="form-label">Image_one</label>
+                            <input name="image_one" id="image_one" type="file" class="form-control">
+                            <p id="alertPTag1"style="color: red;"></p>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Image_two</label>
+                            <input name="image_two" id="image_two" type="file" class="form-control">
+                            <p id="alertPTag2"style="color: red;"></p>
+                        </div>
+                        <div class="col-md-12">
+                        </div>
+                        <div class="col-md-12">
+                            <div id="editor">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Content</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="contentDiv" class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Modal Centered Scrollable-->
+
+<div class="row g-3 mb-3"> 
+            <div class="col-md-12">
+                <div class="card"> 
+                    <div class="card-header py-3 d-flex justify-content-between align-items-center bg-transparent border-bottom-0">
+                        <h6 class="m-0 fw-bold">Blogs</h6>
+                    </div>
+                    <div class="card-body"> 
+                        <table id="blogTable" class="table table-hover align-middle mb-0" style="width: 100%;">  
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Content</th>
+                                    <th>Image_one</th>
+                                    <th>Image_two</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- Row end  -->
+{% endblock %}
+{% block javascript %}
+<script src="{% static 'official/js/helper.js' %}"></script>
+<script src="{% static 'official/js/blog.js' %}"></script>
+{% endblock %}

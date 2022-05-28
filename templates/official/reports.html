@@ -1,0 +1,115 @@
+{% extends 'official/base.html' %}
+{% load static %}
+{% block content %}
+<div class="body d-flex py-3">
+    <div class="container-xxl shadow-lg p-3 mb-5 bg-white rounded">
+        <div>
+            <form id="filterForm">        
+            <div class="row">
+            <h5 class="text-primary">status:</h5>
+            <div class="col-lg-2">
+                <label class="form-label">open</label>
+                <input type="checkbox" value="open" name="status" class="form-check-input">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">pending</label>
+                <input type="checkbox" value="pending" name="status" class="form-check-input" id="status">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">attended</label>
+                <input type="checkbox" value="attended" name="status" class="form-check-input" id="status">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">completed</label>
+                <input type="checkbox" value="completed" name="status" class="form-check-input" id="status">
+            </div>
+            <div class="col-lg-4">
+                <label for="" class="form-label">start date:</label>
+                <input type="date" name="startdate" class="form-control" id="startdate">
+            </div>
+        </div>
+        <div class="row">
+            <h5 class="text-primary">category:</h5>
+            <div class="col-lg-2">
+                <label class="form-label">cycle</label>
+                <input type="checkbox" value="cycle" name="category" class="form-check-input">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">fitness</label>
+                <input type="checkbox" value="fitness" name="category" class="form-check-input">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">badminton</label>
+                <input type="checkbox" value="badminton" name="category" class="form-check-input">
+            </div>
+            <div class="col-lg-2">
+                <label for="" class="form-label">Branch:</label>
+                <select multiple="multiple" name="branch" id="branch" required>
+                    {% for branch in branch %}
+                    <option value="{{branch.id}}">{{branch.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-lg-4">
+                <label for="" class="form-label">end date:</label>
+                <input type="date" name="enddate" class="form-control" id="enddate">
+            </div>
+            <div class="mb-3 form-check">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        </form>
+        </div>        
+        <div class="row p-3 g-3 mb-3">
+            <div class="col-md-12">
+                <div class="card">
+                   
+                    <div class="card-body">
+                        <!-- <div class="mb-3 form-check">
+                            <button type="button" id="button-excel" class="btn btn-success saveAsExcel">Export to excel</button>
+                        </div> -->
+                        <table id="reportsTable" class="table table-hover align-middle mb-0"
+                            style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Job card no</th>
+                                    <th>Created Date</th>
+                                    <th>Attended date</th>
+                                    <th>Completed date</th>
+                                    <th>Branch</th>
+                                    <th>category</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row end  -->
+
+    </div>
+</div>
+
+{% endblock %}
+{% block javascript %}
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/dataTables.buttons.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.3.1/js/buttons.html5.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+
+<script src="{% static 'official/js/helper.js' %}"></script>
+<script src="{% static 'official/js/filter-reports.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#branch').multiselect();
+    });
+</script>
+
+{% endblock %}
